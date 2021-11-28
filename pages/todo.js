@@ -1,5 +1,5 @@
-import { AppBar } from "components/appbar";
-import {Title} from "ui/title"
+import { AppBar } from "./../components/appbar";
+import {Title} from "./../ui/title"
 
 
 function ToDoPage(props) {
