@@ -1,14 +1,21 @@
- import TextInput from "./../../../ui/forms/TextInput"
- import { Button } from "./../../../ui/buttons"
+import {signInWithEmailAndPassword} from 'firebase/auth'
+
+import {auth} from './../../../firebase/index'
+import TextInput from "./../../../ui/forms/TextInput"
+import { Button } from "./../../../ui/buttons"
 import Login from "./styled"
  
  
 function UserLogin ({...props}){
  
-   
+   function handleClick(e) {
+       e.preventDefault();
+       console.log(1)
+   }
+
     return (
         <>
-        <Login {...props} >    
+        <Login {...props} onClick={handleClick}>    
          <TextInput label="Email"  id="emailAddress" placeholder="janedoe@home.com" {...props}/>
          <TextInput label="Password"  type="password" id="emailAddress" placeholder="use a secure password" {...props}/>
     
