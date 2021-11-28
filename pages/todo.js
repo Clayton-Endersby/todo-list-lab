@@ -7,7 +7,7 @@ function ToDoPage(props) {
     return (
       <>
         <AppBar />
-        <Title> Please Go Away</Title>
+        <Title>Please Go Away</Title>
       </>
     )
   
