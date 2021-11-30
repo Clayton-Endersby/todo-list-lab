@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { GithubAuthProvider, signInWithPopup } from "@firebase/auth";
 import { useState } from 'react';
 import { UseAuth } from '../../../../hooks/useAuth';
 import { auth } from '../../../../firebase';
@@ -8,8 +9,24 @@ import { ProviderButton } from "./../../../../ui/buttons";
 import github from "./github.png";
 
 function GitHubProvider({ children, ...props }) {
+  const router = useRouter()
+  const user = UseAuth()
+  const [isValidUser, setIsValidUser] = useState(null)
+  const provider = new GithubAuthProvider()
+
+  async function requestLogin() {
+    setIsValidUser(await signInWithPopup(auth, provider))
+  }
+
+  function handleClick() {
+    requestLogin()
+  }
+
+  if (isValidUser) {
+    router.push('/todo')
+  }
   return (
-    <ProviderButton>
+    <ProviderButton onClick={handleClick} {...props}>
       <div>
         <Image
           src={github}
