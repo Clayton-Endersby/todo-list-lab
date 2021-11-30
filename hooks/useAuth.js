@@ -5,14 +5,15 @@ import {auth} from './../firebase'
 function UseAuth() {
     const [user, setUser] = useState(null)
     useEffect(()=>{
-        onAuthStateChanged(auth, (clientCredential)=>{
+        const isUser = onAuthStateChanged(auth, (clientCredential)=>{
             if (clientCredential) {
                 setUser(clientCredential)
             }else {
                 setUser(null)
             }
         })
-    })
+        return ()=>isUser()
+    }, [])
     return user
 }
 

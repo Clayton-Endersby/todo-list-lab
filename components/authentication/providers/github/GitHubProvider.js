@@ -1,5 +1,8 @@
 import Image from "next/image";
-
+import { useRouter } from "next/router";
+import { useState } from 'react';
+import { UseAuth } from '../../../../hooks/useAuth';
+import { auth } from '../../../../firebase';
 import { ProviderButton } from "./../../../../ui/buttons";
 
 import github from "./github.png";
